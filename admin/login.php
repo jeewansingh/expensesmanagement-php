@@ -1,9 +1,24 @@
 <?php
 include ("../conn.php");
 include ("../functions/requests.php");
+include("../functions/validators.php");
 
 $username =  $_POST['username']; 
 $password = $_POST['password']; 
+
+// if (empty($username) && empty($password)){
+//     api_error_response("Username and Password required");
+// }
+
+// if (empty($username)){
+//     api_error_response("Username Required");
+// }
+// if (empty($password)){
+//     api_error_response("Password Required");
+// }
+
+post_data_validator(["username", "password"]);
+
 
 $password = md5($password);
 

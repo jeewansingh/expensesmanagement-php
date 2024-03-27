@@ -4,8 +4,17 @@ include("functions/requests.php");
 include("functions/validators.php");
 
 
-
 if ($_SERVER["REQUEST_METHOD"] == "GET") {
+  
+  // $category = request_get("category", "");
+  // $search = request_get("search", "");
+  // $start_date = request_get("start_date", "1920-01-01");
+  // $end_date = request_get("end_date", "2080-01-01");
+  // $sort = request_get("sort", "txn_id");
+
+  // $page_count_sql = "SELECT COUNT(txn_id) as total FROM `transaction` WHERE category='$category' AND user_id='$user_id'  AND (title LIKE '%$search%'OR description LIKE '%$search%')  AND date BETWEEN '$start_date' AND '$end_date' ;";
+  // // $sql = "SELECT * FROM `transaction` WHERE category='$category' AND user_id='$user_id' AND (title LIKE '%$search%' OR description LIKE '%$search%') AND date BETWEEN '$start_date' AND '$end_date' ORDER BY txn_id DESC LIMIT $limit OFFSET $offset;";
+  // $sql = "SELECT * FROM `transaction` WHERE category='$category' AND user_id='$user_id' AND (title LIKE '%$search%' OR description LIKE '%$search%') AND date BETWEEN '$start_date' AND '$end_date' ORDER BY $sort DESC LIMIT $limit OFFSET $offset;";
 
   $category = $_GET['category'];
   $token = $_GET['token'];
@@ -17,12 +26,11 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
     $row = mysqli_fetch_assoc($result);
     $user_id = $row["user_id"];
 
-
   $page = isset($_GET["page"]) ? (int)$_GET["page"] : 1;
   $limit = 5;
   $offset = ($page - 1) * $limit;
 
-  $search_string = "";
+  $search_string = " ";
   if (isset($_GET["search"])) {
     $search_string = $_GET["search"];
   }

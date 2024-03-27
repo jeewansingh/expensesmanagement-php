@@ -5,9 +5,16 @@ include("functions/requests.php");
 
 $username =  $_POST['username']; 
 $password = $_POST['password']; 
-// if ($username == '' || $password == '') {
-//     api_error_response("Invalid username and password");
-// }
+if (empty($username) && empty($password)){
+    api_error_response("Username and Password required");
+}
+
+if (empty($username)){
+    api_error_response("Username Required");
+}
+if (empty($password)){
+    api_error_response("Password Required");
+}
 $password = md5($password);
 
 
