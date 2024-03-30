@@ -4,9 +4,9 @@ include ("../functions/requests.php");
 include("../functions/validators.php");
 
 if ($_SERVER["REQUEST_METHOD"] == "GET") {
-    $sql = "SELECT `user_id`, `name`, `username`, `is_active`, `date_created`, `is_admin` FROM `user_autho` WHERE is_admin = true AND is_delete=false";
+    $user_id = $_GET['user_id'];
+    $sql = "SELECT  * FROM `user_autho` WHERE user_id = $user_id ORDER BY txn_id DESC";
     $result = mysqli_query($conn, $sql);
-
 
     if (mysqli_num_rows($result) >= 1) {
         $response = array();
@@ -21,8 +21,10 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
         api_error_response("No data found.");
     }
 }
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
+else if ($_SERVER["REQUEST_METHOD"] == "POST") {
 }
-
+else if ($_SERVER["REQUEST_METHOD"] == "DELETE") {
+   
+}
 
 ?>

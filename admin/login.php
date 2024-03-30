@@ -23,7 +23,7 @@ post_data_validator(["username", "password"]);
 $password = md5($password);
 
 
-$sql = "SELECT `user_id`, `username`, `password` FROM `user_autho` WHERE username='$username' AND password='$password' AND is_active=true AND is_admin=true;";
+$sql = "SELECT `user_id`, `username`, `password` FROM `user_autho` WHERE username='$username' AND password='$password' AND is_active=true AND is_admin=true AND is_delete=false;";
 $result = mysqli_query($conn, $sql);
 
 if (mysqli_num_rows($result) === 1) {

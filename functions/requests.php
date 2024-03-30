@@ -25,13 +25,13 @@ function api_success_response($data) {
     exit();
 }
 
-function api_error_response($data) {
+function api_error_response($data, $error_code = 400) {
     if (is_string($data)) {
         $data =  [
             "detail" => $data
         ];
     }
-    http_response_code(400);
+    http_response_code($error_code);
     echo json_encode($data);
     exit();
 }

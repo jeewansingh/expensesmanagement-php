@@ -4,7 +4,7 @@ include ("../functions/requests.php");
 include("../functions/validators.php");
 
 if ($_SERVER["REQUEST_METHOD"] == "GET") {
-    $sql = "SELECT `user_id`, `name`, `username`, `is_active`, `date_created`, `is_admin` FROM `user_autho` WHERE is_admin = true AND is_delete=false";
+    $sql = "SELECT  `name`, `username`, `is_active`, `date_created`, `is_admin` FROM `user_autho` WHERE is_delete=true";
     $result = mysqli_query($conn, $sql);
 
 

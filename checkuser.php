@@ -12,7 +12,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $sql = "SELECT user_autho.user_id
     FROM user_autho
     INNER JOIN tokens
-    ON user_autho.user_id = tokens.user_id WHERE token = '$token' AND is_active = true ";
+    ON user_autho.user_id = tokens.user_id WHERE token = '$token' AND is_active = true AND is_delete=false";
     $result = mysqli_query($conn, $sql);
 
     $status = false;
